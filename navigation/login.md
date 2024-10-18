@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Login
-<<<<<<< HEAD
 permalink: /login
 search_exclude: true
 show_reading_time: false
