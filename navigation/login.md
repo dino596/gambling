@@ -13,7 +13,7 @@ show_reading_time: false
         flex-wrap: wrap; /* allows the cards to wrap onto the next line if the screen is too small */
     }
     
-    .login-card, .signup-card {
+    .login-card {
         margin-top: 0;
         width: 45%;
         border: 1px solid #ddd;
@@ -25,7 +25,7 @@ show_reading_time: false
         text-align: center;
     }
     
-    .login-card h1, .signup-card h1 {
+    .login-card h1 {
         margin-bottom: 20px;
     }
 </style>
@@ -59,7 +59,6 @@ function handleLogin(event) {
     event.preventDefault(); // Prevent default form submission
     const uid = document.getElementById("uid").value;
     const password = document.getElementById("password").value;
-
     fetch('https://your-api-endpoint/api/authenticate', { // Update the API endpoint
         method: "POST",
         headers: {
@@ -80,46 +79,6 @@ function handleLogin(event) {
     .catch(error => {
         console.error("Login Error:", error);
         document.getElementById("loginMessage").textContent = `Login Error: ${error.message}`;
-    });
-}
-
-// dealing w signup request
-function handleSignup(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    const signupButton = document.querySelector(".signup-card button");
-    signupButton.disabled = true;
-    signupButton.style.backgroundColor = '#d3d3d3'; // Disable button during signup
-
-    const name = document.getElementById("name").value;
-    const uid = document.getElementById("signupUid").value;
-    const password = document.getElementById("signupPassword").value;
-    const kasmNeeded = document.getElementById("kasmNeeded").checked;
-
-    fetch('https://your-api-endpoint/api/user', { // Update the API endpoint
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name, uid, password, kasm_server_needed: kasmNeeded })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Signup failed: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById("signupMessage").textContent = "Signup successful!";
-        signupButton.disabled = false;
-        signupButton.style.backgroundColor = ''; // Re-enable button after successful signup
-        window.location.href = '/profile'; // Redirect to profile after signup
-    })
-    .catch(error => {
-        console.error("Signup Error:", error);
-        document.getElementById("signupMessage").textContent = `Signup Error: ${error.message}`;
-        signupButton.disabled = false;
-        signupButton.style.backgroundColor = ''; // Re-enable button if there's an error
     });
 }
 </script>
