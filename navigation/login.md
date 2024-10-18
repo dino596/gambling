@@ -6,13 +6,6 @@ search_exclude: true
 show_reading_time: false
 ---
 
----
-layout: page 
-title: Login
-search_exclude: true
-permalink: /login/
----
-
 <style>
     .login-container {
         display: flex;
