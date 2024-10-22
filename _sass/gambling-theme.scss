@@ -1,0 +1,106 @@
+// Define a color palette for the casino theme
+$background-color: #2c3e50; // Dark background like a casino table
+$card-color: #e74c3c; // Red for cards or chips
+$chip-color: #27ae60; // Green for chips
+$gold: #f1c40f; // Gold for accents
+$highlight: #ecf0f1; // White for key highlights
+$shadow-color: rgba(0, 0, 0, 0.7); // Increased shadow depth
+
+// General body style
+body {
+  background-color: $background-color;
+  color: $highlight;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+// Style for buttons resembling poker chips
+.button-chip {
+  background-color: $chip-color;
+  color: $highlight;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px $shadow-color;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid $highlight; // Add border for more depth
+
+  &:hover {
+    background-color: darken($chip-color, 10%);
+    transform: scale(1.15); // Make hover effect slightly larger
+    box-shadow: 0 7px 20px $shadow-color;
+  }
+}
+
+// Style for card elements
+.card {
+  background-color: $card-color;
+  color: $highlight;
+  border-radius: 10px;
+  width: 150px;
+  height: 220px;
+  box-shadow: 0 10px 20px $shadow-color;
+  display: inline-block;
+  margin: 20px;
+  transition: transform 0.4s, box-shadow 0.4s; // Add shadow transition for smooth effect
+
+  &:hover {
+    transform: rotate(10deg) scale(1.1); // Slightly reduced rotation for better UX
+    box-shadow: 0 15px 30px $shadow-color;
+  }
+}
+
+// Style for header like casino neon signs
+.header {
+  font-size: 60px;
+  color: $gold;
+  text-shadow: 2px 2px 15px $highlight, 0 0 20px $gold; // Enhanced glowing effect
+  letter-spacing: 5px;
+  margin-top: 50px;
+  animation: pulse 2s infinite; // Pulsing animation for neon effect
+}
+
+// Neon pulse animation for the header
+@keyframes pulse {
+  0%, 100% { text-shadow: 2px 2px 15px $highlight, 0 0 20px $gold; }
+  50% { text-shadow: 2px 2px 25px $highlight, 0 0 30px $gold; }
+}
+
+// Style for smaller casino-like glowing text
+.text-glow {
+  font-size: 24px;
+  color: $gold;
+  text-shadow: 0 0 5px $gold, 0 0 15px $gold; // Increased glow for a more striking effect
+  letter-spacing: 2px;
+  margin: 20px;
+}
+
+// Add animation to simulate blinking lights
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.blinking {
+  animation: blink 1s infinite;
+}
+
+// Styling for a casino table layout (e.g., poker table)
+.table {
+  background-color: $background-color;
+  border: 2px solid $highlight;
+  padding: 20px;
+  margin: 50px auto;
+  max-width: 80%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px $shadow-color;
+}
